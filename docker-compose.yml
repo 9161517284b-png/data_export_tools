@@ -1,14 +1,11 @@
-version: '3'
+version: '3.8'
 services:
-  postgres:
-    image: ghcr.io/devcontainers/features/postgres:1
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: testdb
+  clickhouse-server:
+    image: clickhouse/clickhouse-server:22.8
     ports:
-      - "5432:5432"
-  clickhouse:
-    image: yandex/clickhouse-server:latest
-    ports:
-      - "9000:8123"
-      - "9009:9000"
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+volumes:
+  clickhouse_data:
