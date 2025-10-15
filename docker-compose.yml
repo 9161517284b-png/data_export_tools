@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgres:
+    image: ghcr.io/devcontainers/features/postgres:1
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    ports:
+      - "9000:8123"
+      - "9009:9000"
